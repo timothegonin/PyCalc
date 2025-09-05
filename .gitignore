@@ -1,0 +1,110 @@
+# === PYTHON ===
+# Bytecode compilé
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Tests
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Environnements virtuels
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# === VSCODE ===
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+.vscode/tasks.json
+# Garde workspace settings
+!.vscode/settings.json.example
+
+# === OS ===
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+.directory
+
+# === LOGS ===
+*.log
+logs/
+
+# === TEMP FILES ===
+*.tmp
+*.temp
+.cache/
+
+# === IDE ===
+# PyCharm
+.idea/
+
+# === PROJET SPÉCIFIQUE ===
+# Screenshots de l'app
+screenshots/
+*.png
+*.jpg
+
+# Fichiers de config local
+config.local.py
+secrets.env
