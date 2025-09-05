@@ -78,36 +78,37 @@ class CalculatorGUI:
         
         # Définition des boutons : (texte, ligne, colonne, couleur)
         button_config = [
-            # Ligne 0 - Fonctions spéciales
-            ("AC", 0, 0, "#ff4444"),   # All Clear - rouge
-            ("±", 0, 1, "#666666"),    # Plus/Minus - gris
-            ("√", 0, 2, "#666666"),    # Racine carrée - gris
-            ("/", 0, 3, "#ff8c00"),    # Division - orange
-            
-            # Ligne 1 - Chiffres 7-9 et multiplication
-            ("7", 1, 0, "#333333"),    # Chiffres - gris foncé
-            ("8", 1, 1, "#333333"),
-            ("9", 1, 2, "#333333"),
-            ("*", 1, 3, "#ff8c00"),    # Multiplication - orange
-            
-            # Ligne 2 - Chiffres 4-6 et soustraction
-            ("4", 2, 0, "#333333"),
-            ("5", 2, 1, "#333333"),
-            ("6", 2, 2, "#333333"),
-            ("-", 2, 3, "#ff8c00"),    # Soustraction - orange
-            
-            # Ligne 3 - Chiffres 1-3 et addition
-            ("1", 3, 0, "#333333"),
-            ("2", 3, 1, "#333333"),
-            ("3", 3, 2, "#333333"),
-            ("+", 3, 3, "#ff8c00"),    # Addition - orange
-            
-            # Ligne 4 - Zero, virgule, carré et égal
-            ("0", 4, 0, "#333333"),
-            (".", 4, 1, "#333333"),    # Point décimal
-            ("x²", 4, 2, "#666666"),   # Carré
-            ("=", 4, 3, "#ff8c00"),    # Égal - orange
-        ]
+        # Ligne 0 - Fonctions spéciales
+        ("AC", 0, 0, "#ff4444"),   # All Clear - rouge
+        ("±", 0, 1, "#666666"),    # Plus/Minus - gris
+        ("√", 0, 2, "#666666"),    # Racine carrée - gris
+        ("/", 0, 3, "#ff8c00"),    # Division - orange
+
+        # Ligne 1 - Chiffres 7-9 et multiplication
+        ("7", 1, 0, "#333333"),    # Chiffres - gris foncé
+        ("8", 1, 1, "#333333"),
+        ("9", 1, 2, "#333333"),
+        ("*", 1, 3, "#ff8c00"),    # Multiplication - orange
+
+        # Ligne 2 - Chiffres 4-6 et soustraction
+        ("4", 2, 0, "#333333"),
+        ("5", 2, 1, "#333333"),
+        ("6", 2, 2, "#333333"),
+        ("-", 2, 3, "#ff8c00"),    # Soustraction - orange
+
+        # Ligne 3 - Chiffres 1-3 et addition
+        ("1", 3, 0, "#333333"),
+        ("2", 3, 1, "#333333"),
+        ("3", 3, 2, "#333333"),
+        ("+", 3, 3, "#ff8c00"),    # Addition - orange
+
+        # Ligne 4 - Zero (colspan=2), point, carré et égal
+        ("0", 4, 0, "#333333"),    # prendra 2 colonnes (0 et 1) dans le grid
+        (".", 4, 2, "#333333"),    # Point décimal
+        ("x²", 4, 3, "#666666"),   # Carré (gris plus clair)
+        ("=", 5, 0, "#0066cc"),    # Égal - orange (descendu pour aérer)
+    ]
+
         
         # Création des boutons avec leurs styles
         self.button_widgets = {}
@@ -124,9 +125,16 @@ class CalculatorGUI:
                 hover_color=self._get_hover_color(color)
             )
             
-            # Le bouton "0" prend 2 colonnes (comme sur iPhone)
+            # Le bouton "0" prend 2 colonnes
             if text == "0":
                 btn.grid(row=row, column=col, columnspan=2, padx=5, pady=5, sticky="nsew")
+            else:
+                btn.grid(row=row, column=col, padx=5, pady=5, sticky="nsew")
+            self.button_widgets[text] = btn
+
+            # Le bouton "=" prends toute la ligne
+            if text == "=":
+                btn.grid(row=row, column=col, columnspan=4, padx=5, pady=5, sticky="nsew")
             else:
                 btn.grid(row=row, column=col, padx=5, pady=5, sticky="nsew")
             
@@ -150,7 +158,8 @@ class CalculatorGUI:
             "#ff4444": "#ff6666",  # Rouge plus clair
             "#ff8c00": "#ffaa33",  # Orange plus clair
             "#666666": "#888888",  # Gris plus clair
-            "#333333": "#555555"   # Gris foncé plus clair
+            "#333333": "#555555",  # Gris foncé plus clair
+            "#0066cc": "#3399ff"   # Bleu → Bleu plus clair
         }
         return color_map.get(base_color, "#555555")
     
