@@ -6,7 +6,7 @@ Interface graphique moderne avec CustomTkinter
 import customtkinter as ctk
 import math
 from typing import Callable
-from .calculator import Calculator
+from calculator import Calculator
 
 
 class CalculatorGUI:
